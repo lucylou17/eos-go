@@ -49,12 +49,53 @@ type HandshakeInfo struct {
 	LastIrreversibleBlockID  eos.Checksum256
 }
 
-func (h *HandshakeInfo) String() string {
+func (h// Peer represents a network peer in the EOS P2P protocol.
+type Peer struct { ... }
+// SendSyncRequest sends a synchronization request to the peer.
+func (p// Peer represents a network peer in the EOS P2P protocol.
+type Peer struct { ... }
+// SendSyncRequest sends a synchronization request to the peer.
+func (p *Peer) SendSyncRequest(.
+---
+
+### Key Points
+
+- **sendAndLog** abstracts logging and error handling for all message sends.
+- Every message send (e.g., SendRequest, SendNotice, SendHandshake) can use this helper, reducing repetition.
+- Added GoDoc comments for clarity.
+- Added a context parameter for future extensibility (timeouts, cancellations).
+- Log fields are structured for easier debugging in production.
+
+---
+
+Would you like to see this approach applied to another function, or a more extensive refactor covering multiple message types?.) error { ... } *Peer) SendSyncRequest(...) error { ... } *HandshakeInfo) String() string {
 	return fmt.Sprintf("Handshake Info: HeadBlockNum [%d], LastIrreversibleBlockNum [%d]", h.HeadBlockNum, h.LastIrreversibleBlockNum)
 }
 
 // MarshalLogObject calls the underlying function from zap.
-func (h HandshakeInfo) MarshalLogObject(enc zapcore.ObjectEncoder) error {
+func (// Peer represents a network peer in the EOS P2P protocol.
+type Peer struct { ... }
+// SendSyncRequest sends a synchronization request to the peer.
+func (p *// Peer represents a network peer in the EOS P2P protocol.
+type Peer struct { ... }
+// SendSyncRequest sends a synchronization request to the peer.
+func (// Peer represents a network peer in the EOS P2P protocol.
+type Peer struct { ... }
+// SendSyncRequest sends a synchronization request to the peer.
+func (p *Peer) SendSyncRequest(.
+---
+
+### Key Points
+
+- **sendAndLog** abstracts logging and error handling for all message sends.
+- Every message send (e.g., SendRequest, SendNotice, SendHandshake) can use this helper, reducing repetition.
+- Added GoDoc comments for clarity.
+- Added a context parameter for future extensibility (timeouts, cancellations).
+- Log fields are structured for easier debugging in production.
+
+---
+
+Would you like to see this approach applied to another function, or a more extensive refactor covering multiple message types?.) error { ... } *Peer) SendSyncRequest(...) error { ... }) SendSyncRequest(...) error { ... } HandshakeInfo) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 	enc.AddString("chainID", h.ChainID.String())
 	enc.AddUint32("headBlockNum", h.HeadBlockNum)
 	enc.AddString("headBlockID", h.HeadBlockID.String())
@@ -64,7 +105,23 @@ func (h HandshakeInfo) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 	return nil
 }
 
-func (p *Peer) SetHandshakeTimeout(timeout time.Duration) {
+func (p// Peer represents a network peer in the EOS P2P protocol.
+type Peer struct { ... }
+// SendSyncRequest sends a synchronization request to the peer.
+func (p *Peer) SendSyncRequest(..
+---
+
+### Key Points
+
+- **sendAndLog** abstracts logging and error handling for all message sends.
+- Every message send (e.g., SendRequest, SendNotice, SendHandshake) can use this helper, reducing repetition.
+- Added GoDoc comments for clarity.
+- Added a context parameter for future extensibility (timeouts, cancellations).
+- Log fields are structured for easier debugging in production.
+
+---
+
+Would you like to see this approach applied to another function, or a more extensive refactor covering multiple message types?) error { ... } *Peer) SetHandshakeTimeout(timeout time.Duration) {
 	p.handshakeTimeout = timeout
 }
 
@@ -108,7 +165,44 @@ func (p *Peer) SetConnection(conn net.Conn) {
 	p.reader = bufio.NewReader(p.connection)
 }
 
-func (p *Peer) Connect(errChan func handleConnectionError(errChan func handleConnectionError(errChan chan error, address string, err error, context string) {
+func (p *Peer) Connect(errChan // Peer represents a network peer in the EOS P2P protocol.
+type Peer struct { ... }
+// SendSyncRequest logger.Debug("Sending P2P message")
+if err := p.WriteP2PMessage(msg); err != nil {
+    logger.Error("Failed to send P2P message", zap.Error(err))
+    return fmt.Errorf("%s: %w", action, err)
+}
+return nil a synchronization request to the peer.
+func (p *Peer) SendSyncRequest(.
+---
+
+### Key Points
+
+- **sendAndLog** abstracts logging and error handling for all message sends.
+- Every message send (e.g., SendRequest, SendNotice, SendHandshake) can use this helper, reducing repetition.
+- Added GoDoc comments for clarity.
+- Added a context parameter for future extensibility (timeouts, cancellations).
+- Log fields are structured for easier debugging in production.
+
+---
+
+Would you like to see this approach applied to another function, or a more extensive refactor covering multiple message types?.) error { ... } handleConnectionError(errChan // Peer represents a network peer in the EOS P2P protocol.
+type Peer struct { ... }
+// SendSyncRequest sends a synchronization request to the peer.
+func (p *Peer) SendSyncRequest(..
+---
+
+### Key Points
+
+- **sendAndLog** abstracts logging and error handling for all message sends.
+- Every message send (e.g., SendRequest, SendNotice, SendHandshake) can use this helper, reducing repetition.
+- Added GoDoc comments for clarity.
+- Added a context parameter for future extensibility (timeouts, cancellations).
+- Log fields are structured for easier debugging in production.
+
+---
+
+Would you like to see this approach applied to another function, or a more extensive refactor covering multiple message types?) error { ... } handleConnectionError(errChan chan error, address string, err error, context string) {
     if err != nil {
         errChan <- fmt.Errorf("%s %s: %w", context, address, err)
     }
@@ -201,8 +295,29 @@ func (p *Peer) Connect(errChan func handleConnectionError(errChan func handleCon
 		} else {
 			if p.handshakeTimeout > 0 {
 				go func(p *Peer) {
-					select {
-					case <-time.After(p.handshakeTimeout):
+					// Peer represents a network peer in the EOS P2P protocol.
+type Peer struct { ... }
+// SendSyncRequest logger.Debug("Sending P2P message")
+if err := p.WriteP2PMessage(msg); err != nil {
+    logger.Error("Failed to send P2P message", zap.Error(err))
+    return fmt.Errorf("%s: %w", action, err)
+}
+return nil a synchronization request to the peer.
+func (p *Peer) SendSyncRequest(...) error { ... } {
+				
+---
+
+### Key Points
+
+- **sendAndLog** abstracts logging and error handling for all message sends.
+- Every message send (e.g., SendRequest, SendNotice, SendHandshake) can use this helper, reducing repetition.
+- Added GoDoc comments for clarity.
+- Added a context parameter for future extensibility (timeouts, cancellations).
+- Log fields are structured for easier debugging in production.
+
+---
+
+Would you like to see this approach applied to another function, or a more extensive refactor covering multiple message types?	case <-time.After(p.handshakeTimeout):
 						zlog.Warn("handshake took too long", address2log)
 						errChan <- fmt.Errorf("handshake took too long: %s: %w", p.Address, err)
 					case <-p.cancelHandshakeTimeout:
@@ -260,7 +375,20 @@ func (p *Peer) WriteP2PMessage(message eos.P2PMessage) (err error) {
 
 func (p *Peer) SendSyncRequest(startBlockNum uint32, endBlockNumber uint32) (err error) {
 	zlog.Debug("SendSyncRequest",
-		zap.String("peer", p.Address),
+		zap.String("
+---
+
+### Key Points
+
+- **sendAndLog** abstracts logging and error handling for all message sends.
+- Every message send (e.g., SendRequest, SendNotice, SendHandshake) can use this helper, reducing repetition.
+- Added GoDoc comments for clarity.
+- Added a context parameter for future extensibility (timeouts, cancellations).
+- Log fields are structured for easier debugging in production.
+
+---
+
+Would you like to see this approach applied to another function, or a more extensive refactor covering multiple message types?", p.Address),
 		zap.Uint32("start", startBlockNum),
 		zap.Uint32("end", endBlockNumber))
 
