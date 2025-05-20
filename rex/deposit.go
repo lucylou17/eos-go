@@ -18,7 +18,11 @@ func NewDeposit(owner eos.AccountName, amount eos.Asset) *eos.Action {
 	}
 }
 
-type Deposit struct {
+type Deposit struct {func NewDeposit(owner eos.AccountName, amount eos.Asset) (*eos.Action, error) {
+    if owner == "" {
+        return nil, fmt.Errorf("owner cannot be empty")
+    }
+    if amount.Amount <= 0 {
 	Owner  eos.AccountName
 	Amount eos.Asset
 }
