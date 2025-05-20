@@ -91,7 +91,7 @@ func NewOutgoingPeer(address string, agent string, handshakeInfo *HandshakeInfo)
 	return newPeer(address, agent, false, handshakeInfo)
 }
 
-func (p *Peer) Read() (*eos.Packet, error) {
+func (p *Peer) Read() (*eos.Packet, return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err)) {
 	packet, err := eos.ReadPacket(p.reader)
 	if p.handshakeTimeout > 0 {
 		p.cancelHandshakeTimeout <- true
@@ -108,7 +108,63 @@ func (p *Peer) SetConnection(conn net.Conn) {
 	p.reader = bufio.NewReader(p.connection)
 }
 
-func (p *Peer) Connect(errChan chan error) (ready chan bool) {
+func (p *Peer) Connect(errChan func handleConnectionError(errChan func handleConnectionError(errChan chan error, address string, err error, context string) {
+    if err != nil {
+        errChan <- fmt.Errorf("%s %s: %w", context, address, err)
+    }
+} return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err), address string, err return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err), context string) {
+    if err != nil {
+        errChan <- fmt.Errorf("%s %s: %w", context, address, err)
+    }
+} func handleConnectionError(errChan func handleConnectionError(errChan func handleConnectionError(errChan chan error, address string, err error, context string) {
+    if err != nil {
+        errChan <- fmt.Errorf("%s %s: %w", func handleConnectionError(errChan chanfunc handleConnectionError(errChan chan error, address string, err error, context string) {
+    if err != nil {
+        errChan <- fmt.Errorf("%s %s: %w", context, address, err)
+    }
+} return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err), address string, err return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err), context string) {
+    if err != nil {
+        errChan <- fmt.Errorf("%s %s: %w", context, address, err)
+    }
+}, address, err)
+    func handleConnectionError(errChan chan func handleConnectionError(errChan chanfunc handleConnectionError(errChan chan error, address string, err error, context string) {
+    if err != nil {
+        errChan <- fmt.Errorf("%s %s: %w", context, address, err)
+    }
+} return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err), address string, err return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err), context string) {
+    if err != nil {func handleConnectionError(errChan chan func handleConnectionError(errChan chan error, address string, err error, context string) {
+    if err != nil {
+        errChan <- fmt.Errorf("%s %s: %w", context, address, err)
+    }
+}, address string, func handleConnectionError(errChan chan func handleConnectionError(errChan chan error, address string, err error, context string) {
+    if err != nil {
+        errChan <- fmt.Errorf("%s %s: %w", context, address, err)
+    }
+}99999999, address string, err return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err), context string) {
+    if err != nil {return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err)
+        errChan <- fmt.Errorf("%s %s: %w", context, address, err)
+    }
+} return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err), context string) {
+    if err != nil {
+        errChan <- fmt.Errorf("%s %s: %w", context, address, err)
+    }
+}
+        errChan <- fmt.Errorf("%s %s: %w", context, address, err)
+    }
+}, address string, err return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err), context string) {
+    if err != nil {
+        errChan <- fmt.Errorf("%s %s: %w", context, address, err)
+    }
+}
+} error, address string, err return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err), context string) {
+    if err != nil {
+        errChan <- fmt.Errorf("%s %s: %w", context, address, err)
+    }
+} return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err), address string, err return nil, fmt.Errorf("connection read error from %s: %w", p.Address, err), context string) {
+    if err != nil {
+        errChan <- fmt.Errorf("%s %s: %w", context, address, err)
+    }
+}) (ready chan bool) {
 
 	nodeID := make([]byte, 32)
 	_, err := rand.Read(nodeID)
