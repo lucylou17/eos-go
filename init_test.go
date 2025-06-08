@@ -1,9 +1,13 @@
 package eos
 
 import (
-	"github.com/dfuse-io/logging"
+	"time"
+
+	"github.com/streamingfast/logging"
 )
 
 func init() {
-	logging.TestingOverride()
+	logging.InstantiateLoggers()
+
+	time.Local, _ = time.LoadLocation("America/New_York")
 }

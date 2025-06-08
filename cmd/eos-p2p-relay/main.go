@@ -4,8 +4,9 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/dfuse-io/logging"
 	"github.com/eoscanada/eos-go/p2p"
+	"github.com/streamingfast/logging"
+	"go.uber.org/zap/zapcore"
 )
 
 var peer = flag.String("peer", "", "peer")
@@ -16,7 +17,7 @@ func main() {
 	flag.Parse()
 
 	if *showLog {
-		logging.Set(logging.MustCreateLogger(), "github.com/eoscanada/eos-go/p2p")
+		logging.InstantiateLoggers(logging.WithDefaultLevel(zapcore.InfoLevel))
 	}
 	defer p2p.SyncLogger()
 
